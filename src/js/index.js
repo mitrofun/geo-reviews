@@ -8,7 +8,7 @@ function init () {
 
         center: [55.76, 37.64],
         zoom: 11,
-        controls: ['zoomControl', 'fullscreenControl']
+        controls: ['zoomControl', 'fullscreenControl', 'geolocationControl']
     });
 
 }
