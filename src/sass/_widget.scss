@@ -1,0 +1,133 @@
+@import "variables";
+
+
+.widget-reviews {
+  width: 380px;
+  background: $white;
+  @include border-radius(10px);
+
+  position: absolute;
+  left: 100px;
+  top: 0;
+}
+
+.widget__header {
+  background: $orange;
+  @include border-radius(10px 10px 0 0);
+
+  &:before {
+    content: "";
+    background-color: $white;
+    -webkit-mask-image: url("../svg/pointer.svg");
+    mask-image: url("../svg/pointer.svg");
+    position: absolute;
+    width: 9px;
+    height: 14px;
+    top: 14px;
+    left: 14px;
+  }
+}
+
+.widget__title {
+  color: $white;
+  font-size: 12px;
+  padding: 12px 15px;
+  text-indent: 14px;
+  width: 95%;
+}
+
+
+.widget__close {
+  background-color: $white;
+  -webkit-mask-image: url("../svg/plus.svg");
+  mask-image: url("../svg/plus.svg");
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 12px;
+  right: 13px;
+  cursor: pointer;
+  transform: rotate(45deg);
+}
+
+.widget__body {
+  padding: 15px;
+  @extend %clearfix;
+}
+
+.reviews__wrapper {
+  height: 140px;
+  overflow-x: hidden;
+  border-bottom: 1px solid $light-grey;
+  margin-bottom: 10px;
+}
+
+.reviews__item {
+  margin-bottom: 17px;
+  font-family: "FiraSansRegular", Arial, sans-serif;
+}
+
+.item__title {
+  margin-bottom: 7px;
+}
+
+.item-title__name {
+  font-family: "FiraSansMedium", Arial, sans-serif;
+  font-size: 16px;
+  padding-right: 10px;
+}
+
+.item-title__place {
+  padding-right: 6px;
+  font-size: 16px;
+  color: $light-black;
+}
+
+.item-title__datetime {
+  font-size: 14px;
+  color: $light-black;
+}
+
+.form__header {
+  font-family: "FiraSansMedium", Arial, sans-serif;
+  color: $orange;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.input__name,
+.input__place,
+.textarea__review {
+  outline: none;
+  @include border-radius(17px);
+  border: 1px solid $gray;
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 4px 14px;
+  font-size: 15px;
+  font-family: "FiraSansRegular", Arial, sans-serif;
+  color: $dark-grey;
+
+  &:hover,
+  &:focus {
+      border: 1px solid #ff8663;
+  }
+}
+
+.textarea__review {
+  resize: vertical;
+  height: 100px;
+}
+
+.input__submit {
+  outline: none;
+  padding: 6px 15px;
+  border: none;
+  margin-top: -5px;
+  @include border-radius(10px);
+  color: $white;
+  background: $orange;
+  float: right;
+  font-size: 12px;
+  font-family: "FiraSansRegular", Arial, sans-serif;
+}

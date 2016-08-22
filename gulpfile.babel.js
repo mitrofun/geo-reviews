@@ -11,7 +11,7 @@ requireDir('./tasks', {recurse: true});
 
 // Tasks
 gulp.task('build', () => {
-	runSequence("jade", "webpack", "misc", "watch", "img");
+	runSequence("jade", "sass", "webpack", "misc", "watch", "img");
 });
 
 // Watcher
