@@ -1,0 +1,2 @@
+import { myMap } from './map'
+
