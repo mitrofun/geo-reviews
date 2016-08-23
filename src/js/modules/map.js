@@ -1,8 +1,12 @@
+import {showNode } from  './ui'
+
 let reviewsMap;
 
 ymaps.ready(init);
 
 function init() {
+
+    let widgetReviews = document.getElementById('widgetReviews');
 
     reviewsMap = new ymaps.Map('map', {
 
@@ -14,18 +18,20 @@ function init() {
     reviewsMap.options.set('dragCursor', 'pointer');
 
     reviewsMap.events.add('click', function (e) {
-        console.log(e.get('coords'));
+        showNode(e, widgetReviews);
 
-        let reviewsPlacemark = new ymaps.Placemark(e.get('coords'), {}, {preset: 'islands#violetIcon'});
-        reviewsMap.geoObjects.add(reviewsPlacemark);
 
-        ymaps.geocode(e.get('coords')).then(function(res) {
-                let firstGeoObject = res.geoObjects.get(0);
-                let address = firstGeoObject.properties.get('text');
-                console.log(res.geoObjects.get(0));
-                console.log(address);
-
-            });
+        //console.log(e.get('coords'));
+        // let reviewsPlacemark = new ymaps.Placemark(e.get('coords'), {}, {preset: 'islands#violetIcon'});
+        // reviewsMap.geoObjects.add(reviewsPlacemark);
+        //
+        // ymaps.geocode(e.get('coords')).then(function(res) {
+        //         let firstGeoObject = res.geoObjects.get(0);
+        //         let address = firstGeoObject.properties.get('text');
+        //         console.log(res.geoObjects.get(0));
+        //         console.log(address);
+        //
+        //     });
     });
 }
 

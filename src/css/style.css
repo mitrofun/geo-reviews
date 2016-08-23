@@ -16,6 +16,7 @@ body {
   -webkit-font-smoothing: antialiased;
   color: #4f4f4f;
   background: #999;
+  overflow: hidden;
 }
 
 body,
@@ -77,8 +78,6 @@ ul {
   -webkit-border-radius: 10px;
   border-radius: 10px;
   position: absolute;
-  left: 100px;
-  top: 0;
 }
 
 .widget__header {
@@ -205,6 +204,10 @@ ul {
   float: right;
   font-size: 12px;
   font-family: "FiraSansRegular", Arial, sans-serif;
+}
+
+.is_hide {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

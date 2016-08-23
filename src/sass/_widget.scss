@@ -5,10 +5,7 @@
   width: 380px;
   background: $white;
   @include border-radius(10px);
-
   position: absolute;
-  left: 100px;
-  top: 0;
 }
 
 .widget__header {

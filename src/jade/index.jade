@@ -7,25 +7,25 @@ html(lang="en")
     link(rel="apple-touch-icon" type="img/png" href="img/apple-touch-favicon.png")
     meta(name="viewport" content="device-width")
     link(rel="stylesheet" type="text/css" href="css/style.css")
-    //script(src="https://api-maps.yandex.ru/2.1/?lang=en" type="text/javascript")
-    //script(src="js/index.js" type="text/javascript")
+    script(src="https://api-maps.yandex.ru/2.1/?lang=en" type="text/javascript")
+    script(src="js/index.js" type="text/javascript")
     body
         #map
-        .widget-reviews
+        .widget-reviews.is_hide(id='widgetReviews')
             .widget__header
-                .widget__title Россия, Московская область, Балашиха, улица Дмитриева, 2
+                .widget__title(id="locationText") Title
                 a.widget__close(href="#")
             .widget__body
                 .reviews__wrapper(id="reviews")
                     ul.reviews__list
                         li.reviews__item Not yet reviews..
-                        //li.reviews__item
-                        //    div.item__title
-                        //        span.item-title__name Dmitriy
-                        //        span.item-title__place Localhost
-                        //        span.item-title__datetime 22.08.2016 20:19:02
-                        //    div.item__review
-                        //        span.item-text Zooooombeeeee!!!!!
+                        //-li.reviews__item
+                            div.item__title
+                                span.item-title__name Dmitriy
+                                span.item-title__place Localhost
+                                span.item-title__datetime 22.08.2016 20:19:02
+                            div.item__review
+                                span.item-text Zooooombeeeee!!!!! -//
                 form.form__reviews-add(method="")
                     .form__header Your review
                     input.input__name(placeholder="Your name")
