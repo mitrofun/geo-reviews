@@ -5,16 +5,16 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     link(rel="icon" type="image/png" href="img/favicon.png")
     link(rel="apple-touch-icon" type="img/png" href="img/apple-touch-favicon.png")
-    meta(name="viewport" content="device-width")
+    meta(name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes")
     link(rel="stylesheet" type="text/css" href="css/style.css")
     script(src="https://api-maps.yandex.ru/2.1/?lang=en" type="text/javascript")
     script(src="js/index.js" type="text/javascript")
     body
-        #map
-        .widget-reviews.is_hide(id='widgetReviews')
+        #map.is_hide
+        .widget-reviews.is_hide(id="widgetReviews")
             .widget__header
                 .widget__title(id="locationText") Title
-                a.widget__close(href="#")
+                a.widget__close(href="#close" id="closeWidgetReviews")
             .widget__body
                 .reviews__wrapper(id="reviews")
                     ul.reviews__list
@@ -26,9 +26,9 @@ html(lang="en")
                                 span.item-title__datetime 22.08.2016 20:19:02
                             div.item__review
                                 span.item-text Zooooombeeeee!!!!! -//
-                form.form__reviews-add(method="")
+                .form__reviews-add
                     .form__header Your review
                     input.input__name(placeholder="Your name")
                     input.input__place(placeholder="Specify place")
                     textarea.textarea__review(placeholder="Share your experiences")
-                    input.input__submit(type="submit" value="Add")
+                    a.input__submit(href="#add" id="addReview") Add
