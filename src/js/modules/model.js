@@ -1,13 +1,13 @@
 import View from './view'
 
 export default {
-
+    reviewsList: [],
 
     createMap(container, coordinates) {
 
         let result = new ymaps.Map(container, {
 			center: coordinates,
-            zoom: 11,
+            zoom: 13,
             controls: ['zoomControl', 'geolocationControl']
 		});
 
@@ -19,6 +19,7 @@ export default {
     createClusterer() {
 
 		return new ymaps.Clusterer({
+            preset: 'islands#invertedVioletClusterIcons',
 			groupByCoordinates: false,
 			clusterOpenBalloonOnClick: true,
 			clusterDisableClickZoom: true,
@@ -38,11 +39,22 @@ export default {
         this.coordinates = e.get('coords');
         this.positionX = e.get('pagePixels')[0];
         this.positionY = e.get('pagePixels')[1];
-        
-        ymaps.geocode(this.coordinates).then((res) => {
+
+        return ymaps.geocode(this.coordinates).then((res) => {
             let firstGeoObject = res.geoObjects.get(0);
+
             this.address = firstGeoObject.properties.get('text');
             })
+    },
+
+    addReview(obj) {
+        this.reviewsList.push(obj);
+    },
+
+    getReviews(coordinates) {
+        return this.reviewsList.filter(review => {
+            return review.coordinates === coordinates
+        })
     }
 
 };

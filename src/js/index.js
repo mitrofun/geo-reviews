@@ -1,5 +1,4 @@
 import Model from './modules/model'
-import View  from './modules/view'
 import Route from './modules/router'
 
 const COORD = [55.76, 37.64];
@@ -29,10 +28,16 @@ Promise.all([promiseWindowLoad, promiseMap]).then(() => {
     console.log('start');
 
     let closeWidgetReviews = document.getElementById('closeWidgetReviews');
+    let buttonAddReview = document.querySelector('.form__reviews__add-button');
+
     closeWidgetReviews.onclick = (e) => {
         Route.handle('closeWidgetReviews');
         e.preventDefault();
     };
+
+    buttonAddReview.onclick = (e) => {
+        Route.handle('addReview', e);
+    }
 
 }).catch(function(e) {
     console.error(e);

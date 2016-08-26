@@ -117,7 +117,7 @@
 }
 
 .input__submit {
-  text-decoration: none;
+  cursor: pointer;
   outline: none;
   padding: 6px 15px;
   border: none;
@@ -128,4 +128,8 @@
   float: right;
   font-size: 12px;
   font-family: "FiraSansRegular", Arial, sans-serif;
+}
+
+.validate__error {
+  border: 1px solid $danger;
 }

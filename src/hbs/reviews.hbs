@@ -1,0 +1,18 @@
+<ul class="reviews__list">
+    {{#if reviews}}
+        {{#each reviews}}
+            <li class="reviews__item">
+              <div class="item__title">
+                  <span class="item-title__name">{{name}}</span>
+                  <span class="item-title__place">{{place}}</span>
+                  <span class="item-title__datetime">{{date}}</span>
+              </div>
+              <div class="item__review">
+                  <span class="item-text">{{text}}</span>
+              </div>
+            </li>
+        {{/each}}
+    {{else}}
+        <li class="reviews__item">Not yet reviews..</li>
+    {{/if}}
+</ul>
