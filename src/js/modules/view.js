@@ -88,7 +88,14 @@ export default {
 
     setClustererLayout() {
 		return ymaps.templateLayoutFactory.createClass(
-            '<div class="my-layout"><h3>Макет</h3><p>Создан на основе шаблона.</p></div>'
+            '<div class="ballon">' +
+                '<h3 class=ballon__header>{{properties.name|raw}}</h3>' +
+                '<div class=ballon__body>' +
+                    '<a class="ballon__link" href="#addres">{{properties.address|raw}}</a>'+
+                    '<p>{{properties.text|raw}}</p>' +
+                '</div>' +
+                '<div class=ballon__footer>{{ properties.date|raw }}</div>' +
+            '</div>'
 		);
 	}
 
