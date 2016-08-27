@@ -55,7 +55,9 @@ export default {
     },
 
     loadReviews() {
-        this.reviewsList = JSON.parse(localStorage['geoReviews']);
+        if ('geoReviews' in localStorage) {
+            this.reviewsList = JSON.parse(localStorage['geoReviews']);
+        }
     }
 
 };

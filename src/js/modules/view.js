@@ -32,7 +32,6 @@ export default {
     },
 
     _setWidgetReviewsTitle() {
-        console.log(Model.address);
         this._widgetReviewsTitle.innerHTML = Model.address;
     },
 
