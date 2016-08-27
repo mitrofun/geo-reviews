@@ -1,0 +1,33 @@
+@import "variables";
+
+.ymaps-2-1-42-balloon,
+.ymaps-2-1-42-balloon__layout {
+  @include border-radius(10px);
+}
+
+.balloon {
+  height: 175px;
+  font-family: "FiraSansRegular", Arial, sans-serif;
+  color: $black;
+}
+
+.balloon__content {
+  min-height: 100%;
+  padding-bottom: 15px;
+}
+
+.balloon__link {
+  text-decoration: none;
+  color: $orange;
+  font-family: "FiraSansMedium", Arial, sans-serif;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.balloon__footer {
+  text-align: right;
+  height: 15px;
+  margin-top: -15px;
+  color: $gray;
+}

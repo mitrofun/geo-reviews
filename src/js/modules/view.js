@@ -88,16 +88,17 @@ export default {
 
     setClustererLayout() {
 		return ymaps.templateLayoutFactory.createClass(
-            '<div class="ballon">' +
-                '<h3 class=ballon__header>{{properties.name|raw}}</h3>' +
-                '<div class=ballon__body>' +
-                    '<a class="ballon__link" href="#addres">{{properties.address|raw}}</a>'+
-                    '<p>{{properties.text|raw}}</p>' +
+            '<div class="balloon">' +
+                '<div class="balloon__content">' +
+                    '<h3 class="balloon__header">{{properties.place|raw}}</h3>' +
+                    '<div class="balloon__body">' +
+                        '<a class="balloon__link" data-coordinates="{{properties.coordinates|raw}}" href="#addres">{{properties.address|raw}}</a>'+
+                        '<p>{{properties.text|raw}}</p>' +
+                    '</div>' +
                 '</div>' +
-                '<div class=ballon__footer>{{ properties.date|raw }}</div>' +
+                '<div class="balloon__footer">{{ properties.date|raw }}</div>' +
             '</div>'
+
 		);
 	}
-
 };
-

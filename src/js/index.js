@@ -20,6 +20,9 @@ let promiseMap = new Promise(resolve => {
     });
 
 }).then(() => {
+    Model.loadReviews();
+    Route.handle('setReviews');
+}).then(() => {
     Route.handle('showMap');
 });
 
@@ -30,14 +33,45 @@ Promise.all([promiseWindowLoad, promiseMap]).then(() => {
     let closeWidgetReviews = document.getElementById('closeWidgetReviews');
     let buttonAddReview = document.querySelector('.form__reviews__add-button');
 
-    closeWidgetReviews.onclick = (e) => {
-        Route.handle('closeWidgetReviews');
+    closeWidgetReviews.addEventListener('click',(e) => {
         e.preventDefault();
-    };
+        Route.handle('closeWidgetReviews');
+    });
 
-    buttonAddReview.onclick = (e) => {
+    buttonAddReview.addEventListener('click', (e) => {
         Route.handle('addReview', e);
-    }
+    });
+
+    document.addEventListener('click', (e) => {
+
+        if (e.target.classList.contains('balloon__link')) {
+            e.preventDefault();
+
+            let data = e.target.dataset;
+
+            let geoObj = {
+
+                coords: [
+                    parseFloat(data.coordinates.split(',')[0]),
+                    parseFloat(data.coordinates.split(',')[1])
+                ],
+                pagePixels: [
+                    e.clientX,
+                    e.clientY
+                ],
+                get(name) {
+                    return this[name]
+                }
+
+            };
+            Route.handle('showWidgetReviews', geoObj);
+        }
+    });
+
+    Model.clusterer.events.add('balloonopen', () => {
+        Route.handle('closeWidgetReviews');
+	});
+
 
 }).catch(function(e) {
     console.error(e);

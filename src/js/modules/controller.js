@@ -1,6 +1,29 @@
 import View from './view'
 import Model from './model'
 
+
+function _setReviewOnMap(review) {
+    let geoObject = new ymaps.Placemark(review.coordinates, {
+                    coordinates: review.coordinates,
+                    address: review.address,
+                    name: review.name,
+					place: review.place,
+					text: review.text,
+					date: review.date
+				}, { preset: 'islands#violetIcon' });
+
+            geoObject.events.add('click', (e) => {
+
+                Model.setGeoData(e).then(() => {
+                    View.showWidgetReviews();
+                    View.renderReviews([review]);
+                });
+
+        });
+
+    Model.clusterer.add(geoObject);
+}
+
 export default {
 
     showMapRoute() {
@@ -14,6 +37,8 @@ export default {
 	},
 
     showWidgetReviewsRoute(e) {
+        Model.clusterer.balloon.close();
+
         Model.setGeoData(e).then(() => {
             View.showWidgetReviews();
             View.renderReviews(Model.getReviews(Model.coordinates));
@@ -23,8 +48,9 @@ export default {
 
     addReviewRoute(e) {
 
-        e.preventDefault();
         console.log('add review');
+        e.preventDefault();
+        Model.clusterer.balloon.close();
 
         let form = document.forms.formAddReview,
             name = form.name.value,
@@ -44,23 +70,21 @@ export default {
                 text: text
             };
 
-
             Model.addReview(review);
 
-            let geoObject = new ymaps.Placemark(Model.coordinates, {
-                    coordinates: review.coordinates,
-                    address: review.address,
-                    name: review.name,
-					place: review.place,
-					text: review.text,
-					date: review.date
-				}, { preset: 'islands#violetIcon' });
-
-            Model.clusterer.add(geoObject);
-
+            _setReviewOnMap(review);
+            
             View.renderReviews(Model.getReviews(Model.coordinates));
 
             View.cleaningForm(form);
         }
+    },
+
+    setReviewsRoute() {
+
+        Model.reviewsList.map(review => {
+            _setReviewOnMap(review);
+        });
+
     }
 }

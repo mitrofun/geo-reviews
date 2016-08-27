@@ -33,9 +33,6 @@ export default {
 	},
 
     setGeoData(e) {
-
-        this.latitude = e.get('coords')[0];
-        this.longitude = e.get('coords')[1];
         this.coordinates = e.get('coords');
         this.positionX = e.get('pagePixels')[0];
         this.positionY = e.get('pagePixels')[1];
@@ -49,13 +46,17 @@ export default {
 
     addReview(obj) {
         this.reviewsList.push(obj);
+        window.localStorage['geoReviews'] = JSON.stringify(this.reviewsList);
     },
 
     getReviews(coordinates) {
         return this.reviewsList.filter(review => {
-            return review.coordinates === coordinates
+            return review.coordinates[0] === coordinates[0] && review.coordinates[1] === coordinates[1]
         })
+    },
+
+    loadReviews() {
+        this.reviewsList = JSON.parse(localStorage['geoReviews']);
     }
 
 };
-
