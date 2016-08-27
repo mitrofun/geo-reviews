@@ -28,8 +28,6 @@ let promiseMap = new Promise(resolve => {
 
 Promise.all([promiseWindowLoad, promiseMap]).then(() => {
 
-    console.log('start');
-
     let closeWidgetReviews = document.getElementById('closeWidgetReviews');
     let buttonAddReview = document.querySelector('.form__reviews__add-button');
 
@@ -55,10 +53,8 @@ Promise.all([promiseWindowLoad, promiseMap]).then(() => {
                     parseFloat(data.coordinates.split(',')[0]),
                     parseFloat(data.coordinates.split(',')[1])
                 ],
-                pagePixels: [
-                    e.clientX,
-                    e.clientY
-                ],
+                pagePixels: [ e.clientX, e.clientY ],
+                
                 get(name) {
                     return this[name]
                 }
@@ -71,7 +67,7 @@ Promise.all([promiseWindowLoad, promiseMap]).then(() => {
     Model.clusterer.events.add('balloonopen', () => {
         Route.handle('closeWidgetReviews');
 	});
-    
+
 }).catch(function(e) {
     console.error(e);
     alert('Ошибка: ' + e.message);
