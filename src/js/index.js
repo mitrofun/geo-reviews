@@ -71,8 +71,7 @@ Promise.all([promiseWindowLoad, promiseMap]).then(() => {
     Model.clusterer.events.add('balloonopen', () => {
         Route.handle('closeWidgetReviews');
 	});
-
-
+    
 }).catch(function(e) {
     console.error(e);
     alert('Ошибка: ' + e.message);

@@ -38,9 +38,8 @@ export default {
         this.positionY = e.get('pagePixels')[1];
 
         return ymaps.geocode(this.coordinates).then((res) => {
-            let firstGeoObject = res.geoObjects.get(0);
-
-            this.address = firstGeoObject.properties.get('text');
+            let geoObj = res.geoObjects.get(0);
+            this.address = geoObj.properties.get('text');
             })
     },
 

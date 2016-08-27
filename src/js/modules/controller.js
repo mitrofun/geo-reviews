@@ -47,8 +47,6 @@ export default {
     },
 
     addReviewRoute(e) {
-
-        console.log('add review');
         e.preventDefault();
         Model.clusterer.balloon.close();
 
@@ -73,7 +71,7 @@ export default {
             Model.addReview(review);
 
             _setReviewOnMap(review);
-            
+
             View.renderReviews(Model.getReviews(Model.coordinates));
 
             View.cleaningForm(form);
