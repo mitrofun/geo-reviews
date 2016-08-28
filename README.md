@@ -1,7 +1,8 @@
 # Geo-reviews
 
-Educational app for creating reviews about the place on the map. 
-Created using Yandex.Maps API and javascript ES 2015
+Educational app for creating reviews about the place on the map.
+Reviews added are saved in localStorage. 
+Created using Yandex.Maps API and javascript ES 2015.
 
 ## Getting Started
 
